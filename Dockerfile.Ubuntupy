@@ -1,0 +1,15 @@
+ARG VERSION=latest
+FROM ubuntu:${VERSION}
+#pulls latest ubuntu image
+
+RUN apt update -y && apt upgrade -y
+RUN apt install python -y && apt install python3-pip -y
+#installing Python and Pip
+
+RUN mkdir /python
+WORKDIR /python
+COPY ./welcome_time.py /python
+
+CMD ["echo", "UbuntuPy"]
+
+RUN python3 welcome_time.py
